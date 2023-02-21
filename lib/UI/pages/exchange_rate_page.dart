@@ -114,130 +114,134 @@ class _ExchangeRatePageState extends ConsumerState<ExchangeRatePage> {
             },
             child: Scaffold(
               backgroundColor: backgroundColor,
-              body: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin:
-                    EdgeInsets.only(top: topStatusBarHeight, left: scale * 15),
-                    child: IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(Icons.arrow_back_ios_new)),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        top: scale * 15.0, left: marginSize),
-                    child: Text(
-                      'Last exchange date: $date',
-                      textScaleFactor: bigTextScaleFactor,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w400,),
+              body: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: height * 0.1,
+                      margin:
+                      EdgeInsets.only(top: topStatusBarHeight, left: scale * 15),
+                      child: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(Icons.arrow_back_ios_new)),
                     ),
-                  ),
-                  Column(
-                    children: [
-                      tokenCustomContainer(
-                          selectedTokenA.first,
-                          currency.toString(),
-                    TextField(
-                            controller: controllerA,
-                            onChanged: (value) {
-                              if (value == null || value == '') {
-                                setState(() {
-                                  controllerB = TextEditingController(text: '');
-                                });
-                              }
-                              else {
-                                setState(() {
-                                  controllerB.clear();
-                                  var result = convertTokensExchangeRate(
-                                      rate.last,
-                                      rate.first,
-                                      double.parse(value));
-                                  controllerB = TextEditingController(
-                                      text: result.toString());
-                                });
-                              }
-                            },
-                            style: TextStyle(
-                              overflow: TextOverflow.clip,
-                              fontWeight: FontWeight.w400, fontSize: scale * 20,
-                            ),
-                            keyboardType: const TextInputType.numberWithOptions(
-                                decimal: true),
-                            textAlign: TextAlign.end,
-                            inputFormatters: [
-                              FilteringTextInputFormatter.allow(RegExp(
-                                  r'^(\d+)?\.?\d{0,2}'),),
-                            ],
-                            decoration: const InputDecoration(
-                                border: InputBorder.none,
-                                hintText: '0.0'
-                            ),
-                          ),
-                          rate.first.toString(),
-                          scale,
-                          marginSize,
-                          imageHeightSize,
-                          mediumTextScaleFactor,
-                          smallTextScaleFactor),
-
-                      Center(
-                        child: Icon(
-                          Icons.arrow_downward,
-                          size: iconScaleSize,
-                        ),
+                    Container(
+                      height: height * 0.3,
+                      margin: EdgeInsets.only(
+                          top: scale * 15.0, left: marginSize),
+                      child: Text(
+                        'Last exchange date: $date',
+                        textScaleFactor: bigTextScaleFactor,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w400,),
                       ),
-                      tokenCustomContainer(
-                          selectedTokenB.first,
-                          currency.toString(),
-                        TextField(
-                            controller: controllerB,
-                            onChanged: (value) {
-                              if (value == null || value == '') {
-                                setState(() {
-                                  controllerA = TextEditingController(text: '');
-                                });
-                              }
-                              else {
-                                setState(() {
-                                  controllerA.clear();
-                                  var result = convertTokensExchangeRate(
-                                      rate.last,
-                                      rate.first,
-                                      double.parse(value));
-                                  controllerA = TextEditingController(
-                                      text: result.toString());
-                                });
-                              }
-                            },
-                            style: TextStyle(
-                              overflow: TextOverflow.clip,
-                              fontWeight: FontWeight.w400, fontSize: scale * 20,
+                    ),
+                    Column(
+                      children: [
+                        tokenCustomContainer(
+                            selectedTokenA.first,
+                            currency.toString(),
+                      TextField(
+                              controller: controllerA,
+                              onChanged: (value) {
+                                if (value == null || value == '') {
+                                  setState(() {
+                                    controllerB = TextEditingController(text: '');
+                                  });
+                                }
+                                else {
+                                  setState(() {
+                                    controllerB.clear();
+                                    var result = convertTokensExchangeRate(
+                                        rate.last,
+                                        rate.first,
+                                        double.parse(value));
+                                    controllerB = TextEditingController(
+                                        text: result.toString());
+                                  });
+                                }
+                              },
+                              style: TextStyle(
+                                overflow: TextOverflow.clip,
+                                fontWeight: FontWeight.w400, fontSize: scale * 20,
+                              ),
+                              keyboardType: const TextInputType.numberWithOptions(
+                                  decimal: true),
+                              textAlign: TextAlign.end,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(RegExp(
+                                    r'^(\d+)?\.?\d{0,2}'),),
+                              ],
+                              decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: '0.0'
+                              ),
                             ),
-                            keyboardType: const TextInputType.numberWithOptions(
-                                decimal: true),
-                            textAlign: TextAlign.end,
-                            inputFormatters: [
-                              FilteringTextInputFormatter.allow(RegExp(
-                                  r'^(\d+)?\.?\d{0,2}'),),
-                            ],
-                            decoration: const InputDecoration(
-                                border: InputBorder.none,
-                                hintText: '0.0'
-                            ),
+                            rate.first.toString(),
+                            scale,
+                            marginSize,
+                            imageHeightSize,
+                            mediumTextScaleFactor,
+                            smallTextScaleFactor,),
+
+                        Center(
+                          child: Icon(
+                            Icons.arrow_downward,
+                            size: iconScaleSize,
                           ),
-                          rate.last.toString(),
-                          scale,
-                          marginSize,
-                          imageHeightSize,
-                          mediumTextScaleFactor,
-                          smallTextScaleFactor),
-                    ],
-                  ),
-                ],
+                        ),
+                        tokenCustomContainer(
+                            selectedTokenB.first,
+                            currency.toString(),
+                          TextField(
+                              controller: controllerB,
+                              onChanged: (value) {
+                                if (value == null || value == '') {
+                                  setState(() {
+                                    controllerA = TextEditingController(text: '');
+                                  });
+                                }
+                                else {
+                                  setState(() {
+                                    controllerA.clear();
+                                    var result = convertTokensExchangeRate(
+                                        rate.last,
+                                        rate.first,
+                                        double.parse(value));
+                                    controllerA = TextEditingController(
+                                        text: result.toString());
+                                  });
+                                }
+                              },
+                              style: TextStyle(
+                                overflow: TextOverflow.clip,
+                                fontWeight: FontWeight.w400, fontSize: scale * 20,
+                              ),
+                              keyboardType: const TextInputType.numberWithOptions(
+                                  decimal: true),
+                              textAlign: TextAlign.end,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(RegExp(
+                                    r'^(\d+)?\.?\d{0,2}'),),
+                              ],
+                              decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: '0.0'
+                              ),
+                            ),
+                            rate.last.toString(),
+                            scale,
+                            marginSize,
+                            imageHeightSize,
+                            mediumTextScaleFactor,
+                            smallTextScaleFactor),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           );
@@ -255,44 +259,61 @@ class _ExchangeRatePageState extends ConsumerState<ExchangeRatePage> {
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(scale * 15))),
-      child: ListTile(
-        leading: ClipOval(
-          child: Container(
-            color: iconColor,
-            child: Padding(
-              padding: EdgeInsets.all(scale * 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: scale * 10,
+          ),
+          ClipOval(
+            child: Container(
+              color: iconColor,
               child: Image.network(
                 token.logoURI,
                 height: imageHeightSize,
               ),
             ),
           ),
-        ),
-        title: Text(token.symbol,
-          textScaleFactor: mediumTextScaleFactor,
-          style: const TextStyle(fontWeight: FontWeight.w400),),
-        subtitle: Text(currency,
-          textScaleFactor: smallTextScaleFactor,
-          style: const TextStyle(fontWeight: FontWeight.w400),),
-        trailing: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Expanded(
-              flex: 2,
-              child: Container(
-                  width: scale * 150,
-                  height: scale * 30,
-                  child: text),
-            ),
-            Expanded(
-              flex: 1,
-              child: Text(exchangeRate,
-                  textScaleFactor: smallTextScaleFactor,
-                  style: const TextStyle(fontWeight: FontWeight.w400)),
-            ),
-          ],
-        ),
+          SizedBox(
+            width: scale * 10,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(token.symbol,
+                textScaleFactor: mediumTextScaleFactor,
+                style: const TextStyle(fontWeight: FontWeight.w400),),
+              Text(currency,
+                textScaleFactor: smallTextScaleFactor,
+                style: const TextStyle(fontWeight: FontWeight.w400),),
+            ],
+          ),
+          const Spacer(),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Expanded(
+                child: Container(
+                    width: scale * 150,
+                    child: text),
+              ),
+              Expanded(
+                child: Text(exchangeRate,
+                    textScaleFactor: smallTextScaleFactor,
+                    style: const TextStyle(fontWeight: FontWeight.w400)),
+              ),
+            ],
+          ),
+          SizedBox(
+            width: scale * 10,
+          ),
+        ],
+        // leading: ,
+        // title:
+        // subtitle:
+        // trailing:
       ),
     );
   }

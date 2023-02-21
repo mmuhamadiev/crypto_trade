@@ -51,90 +51,99 @@ class MainMenu extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-              body: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: topStatusBarHeight == 0.0? 20: topStatusBarHeight, left: marginSize),
-                      child: Text(
-                        'Choose tokens',
-                        textScaleFactor: bigTextScaleFactor,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w400,
+              body: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: height * 0.2,
+                        margin: EdgeInsets.only(
+                            top: topStatusBarHeight == 0.0? 20: topStatusBarHeight, left: marginSize),
+                        child: Text(
+                          'Choose tokens',
+                          textScaleFactor: bigTextScaleFactor,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        showListOfTokens(
-                          context,
-                          (value) {
-                            ref.read(riverpodSelectedTokensProvider).addValueToSelectedTokenA(value, context, ref);
-                          },
-                          height,
-                          bigTextScaleFactor,
-                          mediumTextScaleFactor,
-                          smallTextScaleFactor,
-                          scale,
-                          imageHeightSize,
-                          iconScaleSize,
-                          buttonVerticalPadding, marginSize,
-                          selectedTokenA,
-                          selectedTokenB
-                        );
-                      },
-                      child: CustomContainer(
-                          tokens: selectedTokenA,
-                          staticToken: 'Token A',
-                          mediumTextScaleSize: mediumTextScaleFactor,
-                          scale: scale,
-                          imageHeightSize: imageHeightSize,
-                          iconScaleSize: iconScaleSize),
-                    ),
-                    Center(
-                      child: Icon(
-                        Icons.arrow_downward,
-                        size: imageHeightSize,
+                      GestureDetector(
+                        onTap: () {
+                          showListOfTokens(
+                            context,
+                            (value) {
+                              ref.read(riverpodSelectedTokensProvider).addValueToSelectedTokenA(value, context, ref);
+                            },
+                            height,
+                            bigTextScaleFactor,
+                            mediumTextScaleFactor,
+                            smallTextScaleFactor,
+                            scale,
+                            imageHeightSize,
+                            iconScaleSize,
+                            buttonVerticalPadding, marginSize,
+                            selectedTokenA,
+                            selectedTokenB
+                          );
+                        },
+                        child: CustomContainer(
+                            tokens: selectedTokenA,
+                            staticToken: 'Token A',
+                            mediumTextScaleSize: mediumTextScaleFactor,
+                            scale: scale,
+                            imageHeightSize: imageHeightSize,
+                            iconScaleSize: iconScaleSize),
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        showListOfTokens(
-                          context,
-                          (value) {
-                            ref.read(riverpodSelectedTokensProvider).addValueToSelectedTokenB(value, context, ref);
-                          },
+                      Container(
+                        height: height * 0.1,
+                        child: Center(
+                          child: Icon(
+                            Icons.arrow_downward,
+                            size: imageHeightSize,
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          showListOfTokens(
+                            context,
+                            (value) {
+                              ref.read(riverpodSelectedTokensProvider).addValueToSelectedTokenB(value, context, ref);
+                            },
+                            height,
+                            bigTextScaleFactor,
+                            mediumTextScaleFactor,
+                            smallTextScaleFactor,
+                            scale,
+                            imageHeightSize,
+                            iconScaleSize,
+                            buttonVerticalPadding, marginSize,
+                            selectedTokenA,
+                            selectedTokenB,
+                          );
+                        },
+                        child:  CustomContainer(
+                            tokens: selectedTokenB,
+                            staticToken: 'Token B',
+                            mediumTextScaleSize: mediumTextScaleFactor,
+                            scale: scale,
+                            imageHeightSize: imageHeightSize,
+                            iconScaleSize: iconScaleSize),
+                      ),
+                      SizedBox(
+                        height: height * 0.2,
+                      ),
+                      watchExchangeRateButton(
+                        context,
                           height,
-                          bigTextScaleFactor,
-                          mediumTextScaleFactor,
+                          bottomStatusBarHeight == 0.0? 20: bottomStatusBarHeight,
                           smallTextScaleFactor,
-                          scale,
-                          imageHeightSize,
-                          iconScaleSize,
-                          buttonVerticalPadding, marginSize,
-                          selectedTokenA,
-                          selectedTokenB,
-                        );
-                      },
-                      child:  CustomContainer(
-                          tokens: selectedTokenB,
-                          staticToken: 'Token B',
-                          mediumTextScaleSize: mediumTextScaleFactor,
-                          scale: scale,
-                          imageHeightSize: imageHeightSize,
-                          iconScaleSize: iconScaleSize),
-                    ),
-                    const Spacer(),
-                    watchExchangeRateButton(
-                      context,
-                        bottomStatusBarHeight == 0.0? 20: bottomStatusBarHeight,
-                        smallTextScaleFactor,
-                        marginSize,
-                        buttonVerticalPadding,
-                    selectedTokenA, selectedTokenB, ref),
-                  ],
-                ),
+                          marginSize,
+                          buttonVerticalPadding,
+                      selectedTokenA, selectedTokenB, ref),
+                    ],
+                  ),
+              ),
     );
   }
 
@@ -263,6 +272,7 @@ class MainMenu extends ConsumerWidget {
 
   Widget watchExchangeRateButton(
       BuildContext context,
+      double height,
       double bottomStatusBarHeight,
       double smallTextScaleFactor,
       double marginSize,

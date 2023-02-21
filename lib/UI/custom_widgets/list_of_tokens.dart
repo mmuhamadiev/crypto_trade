@@ -81,11 +81,8 @@ class ListOfTokens extends ConsumerWidget {
                       leading: ClipOval(
                         child: Container(
                           color: iconColor,
-                          child: Padding(
-                            padding: EdgeInsets.all(scale * 8.0),
-                            child: Image.network(token.logoURI,
-                                height: imageHeightSize),
-                          ),
+                          child: Image.network(token.logoURI,
+                              height: imageHeightSize),
                         ),
                       ),
                       title: Text(
@@ -111,11 +108,8 @@ class ListOfTokens extends ConsumerWidget {
                       leading: ClipOval(
                         child: Container(
                           color: iconColor,
-                          child: Padding(
-                            padding: EdgeInsets.all(scale * 8.0),
-                            child: Image.network(token.logoURI,
-                                height: imageHeightSize),
-                          ),
+                          child: Image.network(token.logoURI,
+                              height: imageHeightSize),
                         ),
                       ),
                       title: Text(
@@ -147,11 +141,8 @@ class ListOfTokens extends ConsumerWidget {
                       leading: ClipOval(
                         child: Container(
                           color: iconColor,
-                          child: Padding(
-                            padding: EdgeInsets.all(scale * 8.0),
-                            child: Image.network(token.logoURI,
-                                height: imageHeightSize),
-                          ),
+                          child: Image.network(token.logoURI,
+                              height: imageHeightSize),
                         ),
                       ),
                       title: Text(
@@ -177,11 +168,8 @@ class ListOfTokens extends ConsumerWidget {
                       leading: ClipOval(
                         child: Container(
                           color: iconColor,
-                          child: Padding(
-                            padding: EdgeInsets.all(scale * 8.0),
-                            child: Image.network(token.logoURI,
-                                height: imageHeightSize),
-                          ),
+                          child: Image.network(token.logoURI,
+                              height: imageHeightSize),
                         ),
                       ),
                       title: Text(
@@ -213,11 +201,8 @@ class ListOfTokens extends ConsumerWidget {
                       leading: ClipOval(
                         child: Container(
                           color: iconColor,
-                          child: Padding(
-                            padding: EdgeInsets.all(scale * 8.0),
-                            child: Image.network(token.logoURI,
-                                height: imageHeightSize),
-                          ),
+                          child: Image.network(token.logoURI,
+                              height: imageHeightSize),
                         ),
                       ),
                       title: Text(
@@ -243,11 +228,8 @@ class ListOfTokens extends ConsumerWidget {
                       leading: ClipOval(
                         child: Container(
                           color: iconColor,
-                          child: Padding(
-                            padding: EdgeInsets.all(scale * 8.0),
-                            child: Image.network(token.logoURI,
-                                height: imageHeightSize),
-                          ),
+                          child: Image.network(token.logoURI,
+                              height: imageHeightSize),
                         ),
                       ),
                       title: Text(
@@ -274,11 +256,8 @@ class ListOfTokens extends ConsumerWidget {
                     leading: ClipOval(
                       child: Container(
                         color: iconColor,
-                        child: Padding(
-                          padding: EdgeInsets.all(scale * 8.0),
-                          child: Image.network(token.logoURI,
-                              height: imageHeightSize),
-                        ),
+                        child: Image.network(token.logoURI,
+                            height: imageHeightSize),
                       ),
                     ),
                     title: Text(
